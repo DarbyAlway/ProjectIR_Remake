@@ -3,7 +3,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom'
 import RecipeCard from '../components/RecipeCard'
 import './SearchResults.css'
 
-const API = '/api'
+const API = import.meta.env.VITE_API_URL ?? '/api'
 
 export default function SearchResults() {
   const [params] = useSearchParams()

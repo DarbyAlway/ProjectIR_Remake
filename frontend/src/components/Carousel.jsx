@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import RecipeCard from './RecipeCard'
 import './Carousel.css'
 
-const API = '/api'
+const API = import.meta.env.VITE_API_URL ?? '/api'
 
 export default function Carousel() {
   const [recipes, setRecipes] = useState([])
