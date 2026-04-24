@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"strings"
 	"time"
@@ -841,14 +842,30 @@ func recommendHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	godotenv.Load("../.env")
 
+	// Parse credentials from ES URL (supports https://user:pass@host format for Bonsai)
+	parsedURL, _ := url.Parse(esHost)
 	cfg := elasticsearch.Config{Addresses: []string{esHost}}
+	if parsedURL.User != nil {
+		password, _ := parsedURL.User.Password()
+		cfg = elasticsearch.Config{
+			Addresses: []string{parsedURL.Scheme + "://" + parsedURL.Host},
+			Username:  parsedURL.User.Username(),
+			Password:  password,
+		}
+	}
 	var err error
 	es, err = elasticsearch.NewClient(cfg)
 	if err != nil {
 		log.Fatalf("Error creating ES client: %s", err)
 	}
-	esRes, err := es.Ping()
-	if err != nil || esRes.IsError() {
+	// Use raw HTTP ping so it works with both Elasticsearch and OpenSearch (Bonsai)
+	pingReq, _ := http.NewRequest("GET", parsedURL.Scheme+"://"+parsedURL.Host, nil)
+	if parsedURL.User != nil {
+		password, _ := parsedURL.User.Password()
+		pingReq.SetBasicAuth(parsedURL.User.Username(), password)
+	}
+	pingResp, pingErr := http.DefaultClient.Do(pingReq)
+	if pingErr != nil || pingResp.StatusCode >= 500 {
 		log.Fatalf("Cannot reach Elasticsearch at %s", esHost)
 	}
 	log.Println("Connected to Elasticsearch")

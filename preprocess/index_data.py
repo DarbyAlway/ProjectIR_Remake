@@ -1,12 +1,14 @@
-import re
+import os, re
 import polars as pl
+import numpy as np
 from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk
 from tqdm import tqdm
 
-ES_HOST   = "http://10.255.255.254:9200"
-DATA_PATH = "data/merged.parquet"
-BATCH     = 500
+ES_HOST    = os.getenv("ES_URL", "http://localhost:9200")
+DATA_PATH  = "data/merged.parquet"
+BATCH      = 500
+TOP_N      = 50_000   # index only top-N recipes to fit free-tier storage
 
 RECIPES_MAPPING = {
     "settings": {
@@ -232,6 +234,17 @@ def main():
     print("\nLoading merged.parquet...")
     df = pl.read_parquet(DATA_PATH)
     print(f"Shape: {df.shape}")
+
+    # Keep only top-N recipes by quality score (rating × log popularity)
+    unique = df.unique(subset=["RecipeId"])
+    scored = unique.with_columns([
+        (pl.col("AggregatedRating").fill_null(0) *
+         (pl.col("ReviewCount").fill_null(0).cast(pl.Float64) + 1).log()
+        ).alias("_score")
+    ]).sort("_score", descending=True).head(TOP_N)
+    top_ids = set(scored["RecipeId"].to_list())
+    df = df.filter(pl.col("RecipeId").is_in(top_ids))
+    print(f"Filtered to top {TOP_N:,} recipes → {len(df):,} rows (incl. reviews)")
 
     index_recipes(es, df)
     index_reviews(es, df)
