@@ -1,4 +1,5 @@
 preprocess/data
+preprocess/models/lgbm_recommender.pkl
 node_modules
 server/server
 frontend/dist
