@@ -1,0 +1,2 @@
+/home/patta/miniconda3/envs/project_IR/lib/python3.10/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(

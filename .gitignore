@@ -1,0 +1,5 @@
+preprocess/data
+node_modules
+server/server
+frontend/dist
+.env

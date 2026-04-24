@@ -1,0 +1,124 @@
+.home { min-height: 100vh; }
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 24px 72px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  text-align: center;
+}
+
+.hero h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px; }
+.hero p  { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 36px; }
+
+/* ── Search bar ───────────────────────────────────────────────────────────── */
+
+.search-bar {
+  display: flex;
+  width: 100%;
+  max-width: 580px;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 15px 24px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background: var(--bg-card);
+  color: var(--text);
+}
+
+.search-bar input::placeholder { color: var(--text-dim); }
+
+.search-bar button {
+  padding: 15px 32px;
+  background: var(--accent);
+  color: var(--text);
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.search-bar button:hover { background: var(--accent-hover); }
+
+/* ── Nav ──────────────────────────────────────────────────────────────────── */
+
+.hero-nav {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-sub);
+  font-size: 0.9rem;
+}
+
+.hero-user strong { color: var(--text); }
+
+.nav-link {
+  color: var(--text-sub);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 7px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+
+.nav-link:hover { border-color: var(--text-sub); color: var(--text); }
+
+.nav-link--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.nav-link--primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 7px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── Carousel section ─────────────────────────────────────────────────────── */
+
+.carousel-section {
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.carousel-section h2 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: var(--accent);
+}
+
+.loading { color: var(--text-muted); text-align: center; padding: 40px; }

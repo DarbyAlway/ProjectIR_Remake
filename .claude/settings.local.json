@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 *)",
+      "Bash(curl -s --connect-timeout 5 http://10.255.255.254:9200)",
+      "Bash(curl -s --connect-timeout 5 http://localhost:9200)",
+      "Bash(curl -s --connect-timeout 5 http://127.0.0.1:9200)",
+      "Bash(pip install *)",
+      "Bash(python *)",
+      "Bash(curl *)",
+      "Bash(/usr/local/go/bin/go build *)",
+      "Bash(/usr/local/go/bin/go get *)",
+      "Bash(go build *)",
+      "Bash(xargs cat *)",
+      "Bash(wait)",
+      "Bash(conda run *)",
+      "Bash(/home/patta/miniconda3/envs/project_IR/bin/pip install *)"
+    ]
+  }
+}

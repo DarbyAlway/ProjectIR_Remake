@@ -1,0 +1,14 @@
+[Unit]
+Description=ProjectIR Python Recommender
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/projectir/preprocess
+ExecStart=/home/ubuntu/projectir/preprocess/venv/bin/python recommender_service.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,191 @@
+.detail-page { max-width: 1100px; margin: 0 auto; padding: 28px 24px 60px; color: var(--text); }
+
+/* ── Back button ──────────────────────────────────────────────────────────── */
+
+.back-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  margin-bottom: 28px;
+  font-size: 0.88rem;
+  transition: all 0.2s;
+}
+.back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+
+.detail-hero {
+  display: flex;
+  gap: 36px;
+  margin-bottom: 48px;
+  align-items: flex-start;
+}
+
+.detail-hero img {
+  width: 440px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-md);
+}
+
+.detail-hero-info { flex: 1; }
+
+.detail-title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 8px 0 14px;
+}
+
+.detail-title-row h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  flex: 1;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.detail-bookmark-btn {
+  flex-shrink: 0;
+  margin-top: 4px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 9px 18px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.detail-bookmark-btn:hover { border-color: var(--accent); color: var(--accent); }
+.detail-bookmark-btn.bookmarked { border-color: var(--accent); color: var(--accent); background: var(--accent-muted); }
+
+.detail-bookmark-warning {
+  color: var(--accent);
+  font-size: 0.83rem;
+  margin: -8px 0 14px;
+}
+
+.category {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.description { color: var(--text-muted); line-height: 1.65; margin-bottom: 28px; font-size: 0.95rem; }
+
+/* ── Stats ────────────────────────────────────────────────────────────────── */
+
+.stats { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  min-width: 72px;
+}
+
+.stat span { font-size: 1.15rem; }
+.stat strong { font-size: 1.05rem; margin: 4px 0 2px; color: var(--text); }
+.stat small { color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* ── Body ─────────────────────────────────────────────────────────────────── */
+
+.detail-body { display: flex; gap: 44px; margin-bottom: 56px; }
+.detail-left { width: 280px; flex-shrink: 0; }
+.detail-right { flex: 1; }
+
+.detail-body h2, .reviews-section h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── Ingredients ──────────────────────────────────────────────────────────── */
+
+.ingredients { list-style: none; padding: 0; }
+
+.ingredients li {
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-sub);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ingredients li::before { content: '•'; color: var(--accent); font-size: 1.1rem; flex-shrink: 0; }
+
+/* ── Nutrition ────────────────────────────────────────────────────────────── */
+
+.nutrition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.nutrition-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.nutrition-item strong { font-size: 1.05rem; color: var(--text); }
+.nutrition-item small { color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* ── Instructions ─────────────────────────────────────────────────────────── */
+
+.instructions { padding-left: 20px; }
+
+.instructions li {
+  color: var(--text-sub);
+  line-height: 1.7;
+  margin-bottom: 14px;
+  font-size: 0.93rem;
+  padding-left: 4px;
+}
+
+/* ── Reviews ──────────────────────────────────────────────────────────────── */
+
+.reviews-list { display: flex; flex-direction: column; gap: 14px; }
+
+.review-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.stars { color: #f5a623; letter-spacing: 2px; font-size: 0.95rem; }
+.review-card p { color: var(--text-muted); line-height: 1.6; font-size: 0.9rem; }
+
+.no-reviews { color: var(--text-dim); padding: 24px 0; font-size: 0.9rem; }
+.loading { color: var(--text-muted); text-align: center; padding: 80px; }

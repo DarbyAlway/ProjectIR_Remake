@@ -1,0 +1,15 @@
+[Unit]
+Description=ProjectIR Go Server
+After=network.target docker.service
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/projectir/server
+EnvironmentFile=/home/ubuntu/projectir/.env
+ExecStart=/home/ubuntu/projectir/server/server
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,73 @@
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 0 56px;
+}
+
+.carousel-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 380px;
+  perspective: 1200px;
+  position: relative;
+}
+
+.carousel-item {
+  position: absolute;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-item.offset-0  { transform: translateX(0)      scale(1)    translateZ(0px);   z-index: 5; opacity: 1;   }
+.carousel-item.offset-1  { transform: translateX(280px)  scale(0.82) translateZ(-80px);  z-index: 4; opacity: 0.75; }
+.carousel-item.offset--1 { transform: translateX(-280px) scale(0.82) translateZ(-80px);  z-index: 4; opacity: 0.75; }
+.carousel-item.offset-2  { transform: translateX(500px)  scale(0.65) translateZ(-160px); z-index: 3; opacity: 0.45; }
+.carousel-item.offset--2 { transform: translateX(-500px) scale(0.65) translateZ(-160px); z-index: 3; opacity: 0.45; }
+
+/* ── Nav buttons ──────────────────────────────────────────────────────────── */
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(233, 69, 96, 0.85);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+  line-height: 1;
+}
+
+.carousel-btn:hover { background: var(--accent-hover); transform: translateY(-50%) scale(1.08); }
+.carousel-btn.left  { left: 0; }
+.carousel-btn.right { right: 0; }
+
+/* ── Dots ─────────────────────────────────────────────────────────────────── */
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.dot.active { background: var(--accent); transform: scale(1.35); }
