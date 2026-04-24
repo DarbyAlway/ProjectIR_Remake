@@ -22,10 +22,16 @@ preprocess/venv/bin/pip install --upgrade pip
 preprocess/venv/bin/pip install -r preprocess/requirements.txt
 
 echo "=== Go binary ==="
-# Install Go
-wget -q https://go.dev/dl/go1.22.3.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.22.3.linux-amd64.tar.gz
-rm go1.22.3.linux-amd64.tar.gz
+# Install Go (detect ARM64 vs AMD64 automatically)
+ARCH=$(uname -m)
+if [ "$ARCH" = "aarch64" ]; then
+  GO_FILE="go1.22.3.linux-arm64.tar.gz"
+else
+  GO_FILE="go1.22.3.linux-amd64.tar.gz"
+fi
+wget -q "https://go.dev/dl/${GO_FILE}"
+sudo tar -C /usr/local -xzf "$GO_FILE"
+rm "$GO_FILE"
 export PATH=$PATH:/usr/local/go/bin
 
 cd server
