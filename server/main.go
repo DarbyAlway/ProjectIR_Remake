@@ -23,7 +23,7 @@ import (
 )
 
 var esHost = getEnv("ES_URL", "http://localhost:9200")
-const recommenderURL = "http://localhost:5001/recommend"
+var recommenderURL = getEnv("RECOMMENDER_URL", "http://localhost:5001/recommend")
 
 var es *elasticsearch.Client
 var userCol *mongo.Collection
